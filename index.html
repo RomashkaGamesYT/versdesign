@@ -1,128 +1,304 @@
-<!DOCTYPE html>
-<html lang="ru">
+<!DOCTYPE html><html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vers Design - Современный дизайн</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vers Design — Minecraft дизайн и сборки</title>
+  <meta name="description" content="Vers Design — оформление серверов, превью, баннеры, логотипы, ресурспаки и сборки для Minecraft. Пиши в Telegram: @necrucken" />
+  <meta property="og:title" content="Vers Design — Minecraft дизайн и сборки" />
+  <meta property="og:description" content="Оформление серверов, превью, баннеры, логотипы, ресурспаки и сборки. Пиши: @necrucken" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://t.me/versdsgn" />
+  <meta name="theme-color" content="#45d36b" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0e1116;
+      --panel:#121722;
+      --panel-2:#0c1318;
+      --text:#ecf1f7;
+      --muted:#9fb1c7;
+      --brand:#45d36b;
+      --brand-2:#17b55b;
+      --accent:#8adcf8;
+      --grid: 24px;
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--text);
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(69,211,107,.18), transparent 60%),
+                  radial-gradient(1000px 600px at 0% 10%, rgba(138,220,248,.15), transparent 60%),
+                  var(--bg);
+      background-attachment: fixed;
+    }
+    a{color:inherit}
+    .container{width:min(1100px, 92%); margin-inline:auto}
+    header{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(1.2) blur(8px);
+      background: linear-gradient(180deg, rgba(12,19,24,.8), rgba(12,19,24,.3));
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 0}
+    .logo{display:flex; align-items:center; gap:12px; text-decoration:none}
+    .cube{
+      width:34px; height:34px; position:relative; transform:rotate(45deg);
+      background: linear-gradient(135deg, #1a3a23, #1d5a33);
+      border:2px solid #2ded72; border-radius:6px; box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .cube::after{
+      content:""; position:absolute; inset:0; background:
+      linear-gradient(45deg, rgba(255,255,255,.15), transparent 40%),
+      repeating-linear-gradient(0deg, rgba(255,255,255,.05) 0 2px, transparent 2px 4px);
+      mix-blend-mode:screen;
+    }
+    .brand{font-family:"Press Start 2P", system-ui; font-size:14px; letter-spacing:.5px}
+    nav a{opacity:.85; text-decoration:none; margin-left:18px}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:14px;
+      background:linear-gradient(180deg, var(--brand), var(--brand-2)); color:#06220f; font-weight:800; text-decoration:none;
+      box-shadow:0 6px 18px rgba(69,211,107,.35); border:1px solid rgba(0,0,0,.2)}
+    .btn:hover{transform:translateY(-1px)}
+    .btn-outline{background:transparent; color:var(--text); border:1px solid rgba(140, 226, 170,.35); box-shadow:none}
+    .grid{
+      display:grid; gap:var(--grid);
+      grid-template-columns:repeat(12, 1fr);
+    }
+    .hero{padding:64px 0 48px}
+    .hero .left{grid-column: span 7}
+    .hero .right{grid-column: span 5}
+    h1{font-size: clamp(30px, 6vw, 56px); line-height:1.05; margin:16px 0 10px}
+    .subtitle{font-size: clamp(16px, 2.5vw, 20px); color:var(--muted); max-width:60ch}
+    .tag{
+      display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px;
+      background: rgba(69,211,107,.12); color:#b9f5cd; border:1px solid rgba(69,211,107,.35);
+      font-weight:700; letter-spacing:.2px
+    }
+    .hero-actions{display:flex; gap:12px; margin-top:22px; flex-wrap:wrap}
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+      border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)
+    }
+    .feature{grid-column: span 4; min-height:180px}
+    .feature h3{margin:6px 0 6px}
+    .mono{font-family:"Press Start 2P"; font-size:12px; color:#89a7c0}
+    .pixel-bullet{font-family:"Press Start 2P"; font-size:11px}
+    .gallery{display:grid; grid-template-columns: repeat(6, 1fr); gap:12px}
+    .shot{position:relative; border-radius:12px; overflow:hidden; aspect-ratio: 4/3; background:linear-gradient(135deg, #17202a, #0f141a); border:1px solid rgba(255,255,255,.06)}
+    .shot::after{content:""; position:absolute; inset:0; background:radial-gradient(800px 400px at 0% 0%, rgba(138,220,248,.15), transparent 60%)}
+    .shot small{position:absolute; bottom:8px; left:8px; padding:6px 8px; border-radius:8px; background:rgba(0,0,0,.45); border:1px solid rgba(255,255,255,.1)}.pricing{grid-column: span 4}
+.pricing h3{margin:8px 0}
+.price{font-size:28px; font-weight:800}
 
-        html {
-            scroll-behavior: smooth;
-        }
+.faq dt{font-weight:800; margin-top:16px}
+.faq dd{margin:8px 0 0 0; color:var(--muted)}
 
-        body {
-            background-color: #f9f9fb;
-            color: #333;
-            line-height: 1.6;
-        }
+footer{margin:44px 0 24px; color:#86a2bb}
+.footer-grid{display:grid; gap:10px; grid-template-columns:1fr auto; align-items:center}
 
-        header {
-            background: linear-gradient(135deg, #ff6a00, #ee0979);
-            color: #fff;
-            padding: 80px 20px;
-            text-align: center;
-        }
+/* Responsive */
+@media (max-width: 920px){
+  .hero .left{grid-column: 1 / -1}
+  .hero .right{grid-column: 1 / -1}
+  .feature{grid-column: span 6}
+  .pricing{grid-column: span 6}
+  .gallery{grid-template-columns: repeat(3, 1fr)}
+}
+@media (max-width: 560px){
+  .feature{grid-column: span 12}
+  .pricing{grid-column: span 12}
+  .gallery{grid-template-columns: repeat(2, 1fr)}
+}
 
-        header h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            animation: fadeInDown 1s ease forwards;
-        }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#top" aria-label="Vers Design">
+        <span class="cube" aria-hidden="true"></span>
+        <span class="brand">VERS DESIGN</span>
+      </a>
+      <nav>
+        <a href="#services">Услуги</a>
+        <a href="#gallery">Портфолио</a>
+        <a href="#pricing">Прайс</a>
+        <a href="#contacts">Контакты</a>
+        <a class="btn btn-outline" href="https://t.me/versdsgn" target="_blank" rel="noopener">Telegram</a>
+      </nav>
+    </div>
+  </header>  <main id="top" class="container">
+    <section class="grid hero" aria-labelledby="hero-title">
+      <div class="left">
+        <span class="tag">Minecraft • Дизайн • Сборки</span>
+        <h1 id="hero-title">Vers Design — делаем ваш сервер заметным</h1>
+        <p class="subtitle">Оформление серверов, стилизованные превью, баннеры, логотипы, ресурспаки и сборки. Быстро, аккуратно и в стиле Minecraft. Написать в Telegram: <strong>@necrucken</strong>.</p>
+        <div class="hero-actions">
+          <a class="btn" href="https://t.me/versdsgn" target="_blank" rel="noopener" aria-label="Открыть канал Vers Design в Telegram">Открыть Telegram</a>
+          <a class="btn btn-outline" href="https://t.me/necrucken" target="_blank" rel="noopener" aria-label="Написать @necrucken в Telegram">Написать @necrucken</a>
+        </div>
+        <p class="mono" style="margin-top:12px">Ссылка на Telegram: https://t.me/versdsgn • Связь: @necrucken</p>
+      </div>
+      <div class="right">
+        <div class="card" style="padding:0; overflow:hidden">
+          <canvas id="pixelCanvas" style="display:block; width:100%; aspect-ratio: 1 / 1; image-rendering: pixelated; background:#0a0f12"></canvas>
+        </div>
+      </div>
+    </section><section id="services" class="grid" aria-labelledby="s-title" style="margin-top:10px">
+  <div class="feature card">
+    <div class="pixel-bullet">■ Оформление сервера</div>
+    <h3>Лого, баннеры, шапки</h3>
+    <p>Чистый фирстиль с пиксельной душой. Подготовим все размеры для Discord, Telegram и сайтов лаунчеров.</p>
+  </div>
+  <div class="feature card">
+    <div class="pixel-bullet">■ Контент</div>
+    <h3>Превью и постеры</h3>
+    <p>Обложки для видео и новости, анонсы и ивенты — чтобы клики и вовлечение росли.</p>
+  </div>
+  <div class="feature card">
+    <div class="pixel-bullet">■ Сборки</div>
+    <h3>Плагины и ресурспаки</h3>
+    <p>Продуманная сборка под задачу: оптимизация, конфиги, UX игрока и документация.</p>
+  </div>
+</section>
 
-        header p {
-            font-size: 1.3rem;
-            animation: fadeInUp 1s ease forwards;
-            opacity: 0;
-        }
+<section id="gallery" style="margin-top:24px">
+  <div class="grid">
+    <div class="card" style="grid-column: 1 / -1">
+      <h2 style="margin:0 0 10px">Портфолио (примеры)</h2>
+      <p class="mono">Замените плейсхолдеры своими работами (PNG/JPG)</p>
+      <div class="gallery" aria-label="Примеры работ">
+        <figure class="shot"><small>Превью #1</small></figure>
+        <figure class="shot"><small>Баннер #2</small></figure>
+        <figure class="shot"><small>Логотип #3</small></figure>
+        <figure class="shot"><small>Обложка #4</small></figure>
+        <figure class="shot"><small>Витрина #5</small></figure>
+        <figure class="shot"><small>UI #6</small></figure>
+      </div>
+    </div>
+  </div>
+</section>
 
-        nav {
-            text-align: center;
-            margin: 20px 0;
-        }
+<section id="pricing" class="grid" aria-labelledby="p-title" style="margin-top:24px">
+  <div class="pricing card">
+    <div class="pixel-bullet">■ Старт</div>
+    <h3>Базовый пакет</h3>
+    <p class="price">от 700 ₽</p>
+    <ul>
+      <li>1 логотип + 1 баннер</li>
+      <li>2 правки включено</li>
+      <li>Срок: 1–2 дня</li>
+    </ul>
+  </div>
+  <div class="pricing card" style="border-color: rgba(69,211,107,.6)">
+    <div class="pixel-bullet">■ Популярно</div>
+    <h3>Стандарт</h3>
+    <p class="price">от 1 500 ₽</p>
+    <ul>
+      <li>Лого + баннеры (до 3 шт.)</li>
+      <li>Превью/постер (1 шт.)</li>
+      <li>Срок: 2–4 дня</li>
+    </ul>
+  </div>
+  <div class="pricing card">
+    <div class="pixel-bullet">■ Максимум</div>
+    <h3>Про-пакет</h3>
+    <p class="price">от 3 500 ₽</p>
+    <ul>
+      <li>Фирстиль + набор графики</li>
+      <li>Адаптация для соцсетей</li>
+      <li>Срок: 4–7 дней</li>
+    </ul>
+  </div>
+</section>
 
-        nav a {
-            color: #333;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
+<section class="grid card" aria-labelledby="faq-title" style="margin-top:24px">
+  <div style="grid-column: 1 / -1">
+    <h2 id="faq-title" style="margin:0 0 10px">FAQ</h2>
+    <dl class="faq">
+      <dt>Как сделать заказ?</dt>
+      <dd>Напишите в Telegram на <strong>@necrucken</strong> или перейдите в канал <a href="https://t.me/versdsgn" target="_blank" rel="noopener">@versdsgn</a>.</dd>
+      <dt>Берёте предоплату?</dt>
+      <dd>Да, небольшая предоплата фиксирует слот на работу. Итоговые файлы — после согласования.</dd>
+      <dt>Форматы исходников?</dt>
+      <dd>PNG/JPG для публикаций, SVG/PSD по запросу. Передаём аккуратно организованные файлы.</dd>
+    </dl>
+  </div>
+</section>
 
-        nav a:hover {
-            color: #ff6a00;
-        }
+<section id="contacts" class="grid" aria-labelledby="c-title" style="margin-top:24px">
+  <div class="card" style="grid-column: 1 / -1">
+    <h2 id="c-title" style="margin:0 0 8px">Контакты</h2>
+    <p>Написать в Telegram: <a href="https://t.me/necrucken" target="_blank" rel="noopener">@necrucken</a> · Канал: <a href="https://t.me/versdsgn" target="_blank" rel="noopener">t.me/versdsgn</a></p>
+  </div>
+</section>
 
-        section {
-            padding: 60px 20px;
-            max-width: 1000px;
-            margin: auto;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease;
-        }
+  </main>  <footer class="container">
+    <div class="footer-grid">
+      <div>
+        <span class="mono">© <span id="year"></span> Vers Design. Неофициальный фан‑сайт Minecraft.</span>
+      </div>
+      <div style="display:flex; gap:8px">
+        <a class="btn btn-outline" href="https://t.me/versdsgn" target="_blank" rel="noopener">Telegram</a>
+        <a class="btn" href="https://t.me/necrucken" target="_blank" rel="noopener">Написать @necrucken</a>
+      </div>
+    </div>
+  </footer>  <script>
+    // Год в футере
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    // Пиксельная анимация (кубы/травка)
+    const c = document.getElementById('pixelCanvas');
+    const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+    function resize(){
+      const w = c.clientWidth; const h = c.clientHeight; c.width = w*dpr; c.height = h*dpr;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+    const ctx = c.getContext('2d');
 
-        section h2 {
-            text-align: center;
-            margin-bottom: 40px;
-            color: #ee0979;
-        }
+    function rnd(a,b){return Math.floor(Math.random()*(b-a+1))+a}
 
-        .services {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
+    const tile = 12*dpr;
+    function draw(){
+      ctx.clearRect(0,0,c.width,c.height);
+      // фон
+      ctx.fillStyle = '#0c1418';
+      ctx.fillRect(0,0,c.width,c.height);
+      // сетка травы
+      for(let y=0;y<c.height;y+=tile){
+        for(let x=0;x<c.width;x+=tile){
+          const g = 20 + rnd(0,35);
+          ctx.fillStyle = `rgb(${10+g/6}, ${60+g}, ${25+g/3})`;
+          ctx.fillRect(x,y,tile-2*dpr,tile-2*dpr);
         }
-
-        .service {
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-            padding: 25px;
-            margin: 15px;
-            flex-basis: 30%;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
+      }
+      // «блоки»
+      for(let i=0;i<36;i++){
+        const bw = tile * rnd(2,3); const bh = tile * rnd(2,3);
+        const bx = rnd(0, c.width - bw); const by = rnd(0, c.height - bh);
+        // тень
+        ctx.fillStyle = 'rgba(0,0,0,.25)';
+        ctx.fillRect(bx+2*dpr, by+2*dpr, bw, bh);
+        // блок
+        const shade = rnd(40,80);
+        ctx.fillStyle = `rgb(${16+shade/6}, ${80+shade}, ${40+shade/3})`;
+        ctx.fillRect(bx,by,bw,bh);
+        // блик пикселями
+        ctx.fillStyle = 'rgba(255,255,255,.2)';
+        for(let px=bx; px<bx+bw; px+=tile){
+          for(let py=by; py<by+bh; py+=tile){
+            if(Math.random()>.7) ctx.fillRect(px,py,tile/3,tile/3);
+          }
         }
-
-        .service:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-        }
-
-        .contact a {
-            display: inline-block;
-            background-color: #ee0979;
-            color: #fff;
-            padding: 14px 30px;
-            border-radius: 10px;
-            text-decoration: none;
-            margin-top: 15px;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        .contact a:hover {
-            background-color: #ff6a00;
-            transform: scale(1.05);
-        }
-
-        footer {
-            text-align: center;
-            padding: 25px;
-            background-color: #222;
-            color: #fff;
-        }
-
-        @media(max-width: 768px) {
-            .services {
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
+  </script></body>
+</html>
